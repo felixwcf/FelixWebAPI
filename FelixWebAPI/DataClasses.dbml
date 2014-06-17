@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FelixDB" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(localdb)\Projects;Initial Catalog=FelixDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="FelixDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.USERS" Member="USERs">
+    <Type Name="USER">
+      <Column Name="USER_ID" Type="System.String" DbType="VarChar(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FIRST_NAME" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="LAST_NAME" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GENDER" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="PHONE" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ADDRESS" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CITY" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="STATE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ZIPCODE" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="PROFILEPIC" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+</Database>
