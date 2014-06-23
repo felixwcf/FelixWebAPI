@@ -63,7 +63,7 @@ namespace FelixWebAPI.Controllers
         }
 
         // PUT api/updateUser/user0001
-        [HttpPost]
+        [HttpPut]
         [Route("updateUser/{usrid?}")]
         public HttpResponseMessage updateUser(string usrid, [FromBody] USER user)
         {
