@@ -25,7 +25,9 @@ namespace FelixWebAPI.Controllers
             return users;
         }
 
-        // GET api/users/user0001
+
+        // GET api/getUser/user0001
+        [HttpGet]
         [Route("getUser/{usrid?}")]
         public IEnumerable<USER> GetUsers(string usrid)
         {
@@ -33,6 +35,21 @@ namespace FelixWebAPI.Controllers
                        where usrid == result.USER_ID
                        select result;
             return user;
+        }
+
+        // GET api/checkuser/user0001
+        [HttpGet]
+        [Route("checkuser/{usrid?}")]
+        public HttpResponseMessage CheckUser(string usrid)
+        {
+            var user = from result in dc.USERs
+                       where usrid == result.USER_ID
+                       select result;
+
+            if (user.Count() > 0)
+                return ResponseMsg("FAIL");
+            else
+                return ResponseMsg("OK");
         }
 
         // POST api/addUser
@@ -50,14 +67,14 @@ namespace FelixWebAPI.Controllers
                 Console.WriteLine(ex);
             }
 
-            return ResponseMsg();
+            return ResponseMsg("OK");
         }
 
-        private HttpResponseMessage ResponseMsg()
+        private HttpResponseMessage ResponseMsg(string status)
         {
             //Acknowledge to payment gateway no matter success or failed
             var response = new HttpResponseMessage();
-            response.Content = new StringContent("OK");
+            response.Content = new StringContent(status);
             response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             return response;
         }
@@ -95,9 +112,10 @@ namespace FelixWebAPI.Controllers
             {
                 Console.WriteLine(e);
                 // Provide for exceptions.
+                return ResponseMsg("FAIL");
             }
 
-            return ResponseMsg();
+            return ResponseMsg("OK");
         }
 
         // DELETE api/users/5
@@ -118,10 +136,10 @@ namespace FelixWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                
+                return ResponseMsg("FAIL");
             }
 
-            return ResponseMsg();
+            return ResponseMsg("OK");
         }
     }
 }
