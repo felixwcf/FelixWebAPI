@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Script.Serialization;
 using FelixWebAPI.Models;
 using System.Net.Http.Headers;
+using LinqToSqlShared;
 
 namespace FelixWebAPI.Controllers
 {
@@ -55,19 +56,21 @@ namespace FelixWebAPI.Controllers
         // POST api/addUser
         [Route("addUser")]
         [HttpPost]
+        
         public HttpResponseMessage AddUser(USER user)
         {
             try
             {
                 dc.USERs.InsertOnSubmit(user);
                 dc.SubmitChanges();
+
+                return ResponseMsg("OK");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-            }
-
-            return ResponseMsg("OK");
+                return ResponseMsg("FAIL");
+            }     
         }
 
         private HttpResponseMessage ResponseMsg(string status)
@@ -107,15 +110,15 @@ namespace FelixWebAPI.Controllers
             try
             {
                 dc.SubmitChanges();
+
+                return ResponseMsg("OK");
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 // Provide for exceptions.
                 return ResponseMsg("FAIL");
-            }
-
-            return ResponseMsg("OK");
+            } 
         }
 
         // DELETE api/users/5
@@ -133,13 +136,14 @@ namespace FelixWebAPI.Controllers
             try
             {
                 dc.SubmitChanges();
+                return ResponseMsg("OK");
             }
             catch (Exception ex)
             {
                 return ResponseMsg("FAIL");
             }
 
-            return ResponseMsg("OK");
+            
         }
     }
 }
