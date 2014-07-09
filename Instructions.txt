@@ -1,0 +1,29 @@
+Setting up database server.
+
+Microsoft SQL Server Management Studio
+
+1. We setup the database server DURING the installation wizard.
+2. Start -> Microsoft SQL Server -> Configuration Tools -> Microsoft SQL Server Configuration Manager
+3. Under SQL Server Configuration Manager (Local), Select Server Services, check the SQL Server ( along with Your server name) 
+   is already started. (If no, right click and select Start).
+
+SQL Server 2014 Management Studio
+1. Under Object Explorer tab, right click -> New Database.
+2. Under your database, right click -> Table...
+3. Name your columns, defines the Data Type and other parameters.
+4. Ctrl + S to save the Table.
+
+
+Visual Studio 2013 For Web 
+1. FILE -> New Project -> ASP.NET Web Application.
+2. Select Web API and click OK and wait VS to generate your project workspace (Take few seconds).
+3. On your Solution Explorer Tab (Right hand side of workspace), expand Controllers.
+4. The Default web API is created under the name  of ValuesControllers.cs. You can create a new controller which is REST API.
+
+
+Mind few things:
+
+1. Set API HTTP method, which is Route Prefix - [RoutePrefix("api")] and Endpoint - [Route("getUser/{usrid?}")] (with passing-in parameters in this one).
+2. FelixWebAPI project is using SQL-Linq entity framework to connect and get data from database.
+3. FelixWebAPI2 project is using SQLDatabaseCOnnection framework and connection string to connect and get data from database.
+  

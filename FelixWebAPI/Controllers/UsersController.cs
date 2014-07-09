@@ -12,7 +12,7 @@ using LinqToSqlShared;
 namespace FelixWebAPI.Controllers
 {
     [RoutePrefix("api")]
-    public class UsersController : ApiController
+    public class UsersController : ApiController 
     {
         DataClassesDataContext dc = new DataClassesDataContext();
 

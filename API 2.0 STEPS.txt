@@ -1,0 +1,10 @@
+1. Allow IP with port request from remote computers and devices.
+   
+   Open command prompt with Run as Administrator:
+   - Need to allow IP with port incoming connection, type this and enter:
+     netsh http add urlacl url=http://192.168.0.103:51122/ user=everyone
+   
+   - This just tells http.sys that it’s ok to talk to this url, type this and enter:
+     netsh advfirewall firewall add rule name="IISExpressWeb" dir=in protocol=tcp localport=51122 profile=private remoteip=localsubnet action=allow
+
+SOURCE: http://johan.driessen.se/posts/Accessing-an-IIS-Express-site-from-a-remote-computer
